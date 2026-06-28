@@ -5,6 +5,7 @@ import (
 	"github.com/spf13/viper"
 	"log"
 	"os"
+	"time"
 )
 
 type Config struct {
@@ -26,13 +27,15 @@ type PostgresConfig struct {
 	SSLMode  string
 }
 type RedisConfig struct {
-	Host               string
-	Port               string
-	Password           string
-	Db                 string
-	MinIdleConnections int
-	PoolSize           int
-	PoolTimeout        int
+	Host         string
+	Port         string
+	Password     string
+	Db           string
+	DialTimeout  time.Duration
+	PoolTimeout  time.Duration
+	ReadTimeout  time.Duration
+	WriteTimeout time.Duration
+	PoolSize     int
 }
 
 func GetConfig() *Config {
